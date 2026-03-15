@@ -26,18 +26,18 @@ Klammern haben <em>immer</em> Vorrang.`,
         a: `<strong>Gleichnamig machen, dann z\u00e4hlen.</strong>
 1. Gemeinsamen Nenner (kgV) finden<br>
 2. Z\u00e4hler entsprechend erweitern<br>
-<f>a/n \u00b1 b/n = (a\u00b1b)/n</f>`,
+<f><fr>a|n</fr> \u00b1 <fr>b|n</fr> = <fr>a \u00b1 b|n</fr></f>`,
       },
       {
         q: 'Wie multipliziert man Br\u00fcche?',
         a: `<strong>Z\u00e4hler \u00d7 Z\u00e4hler, Nenner \u00d7 Nenner</strong>
-<f>a/b \u00b7 c/d = (a\u00b7c)/(b\u00b7d)</f>
+<f><fr>a|b</fr> \u00b7 <fr>c|d</fr> = <fr>a \u00b7 c|b \u00b7 d</fr></f>
 Tipp: Vorher k\u00fcrzen, wenn m\u00f6glich!`,
       },
       {
         q: 'Wie dividiert man Br\u00fcche?',
         a: `<strong>Mit dem Kehrwert multiplizieren!</strong>
-<f>a/b : c/d = a/b \u00b7 d/c</f>
+<f><fr>a|b</fr> : <fr>c|d</fr> = <fr>a|b</fr> \u00b7 <fr>d|c</fr></f>
 Den zweiten Bruch umdrehen und dann multiplizieren.`,
       },
       {
@@ -117,7 +117,7 @@ k = Proportionalit\u00e4tskonstante (konstant!)`,
       {
         q: 'Wie berechnet man k bei direkter Proportionalit\u00e4t?',
         a: `<strong>Proportionalit\u00e4tskonstante k:</strong>
-<f>k = y / x</f>
+<f>k = <fr>y|x</fr></f>
 k bleibt f\u00fcr alle Wertepaare gleich.<br>
 Einheit beachten (z.B. \u20ac/kg, km/h \u2026)`,
       },
@@ -126,7 +126,7 @@ Einheit beachten (z.B. \u20ac/kg, km/h \u2026)`,
         a: `<strong>\u201eJe mehr \u2026 desto weniger\u201c</strong>
 Wenn eine Gr\u00f6\u00dfe steigt, sinkt die andere proportional.<br>
 <f>x \u00b7 y = k (konstant)</f>
-oder: y = k / x`,
+oder: y = <fr>k|x</fr>`,
       },
       {
         q: 'Wie berechnet man k bei indirekter Proportionalit\u00e4t?',
@@ -144,9 +144,9 @@ Das Produkt der beiden Gr\u00f6\u00dfen ist immer gleich.`,
       {
         q: 'Fehlende Werte in Tabelle: direkte Proportionalit\u00e4t',
         a: `<strong>Verh\u00e4ltnisgleichung aufstellen.</strong>
-<f>x\u2081 / y\u2081 = x\u2082 / y\u2082</f>
-oder: y\u2082 = y\u2081 \u00b7 (x\u2082 / x\u2081)<br>
-Alternativ: k = y/x bestimmen und anwenden.`,
+<f><fr>x\u2081|y\u2081</fr> = <fr>x\u2082|y\u2082</fr></f>
+oder: y\u2082 = y\u2081 \u00b7 <fr>x\u2082|x\u2081</fr><br>
+Alternativ: k = <fr>y|x</fr> bestimmen und anwenden.`,
       },
     ],
   },
@@ -173,7 +173,7 @@ Alternativ: k = y/x bestimmen und anwenden.`,
       {
         q: 'Wie berechnet man die Fl\u00e4che einer Raute?',
         a: `<strong>Zwei Methoden:</strong>
-<strong>1. Diagonalen:</strong> <f>A = (e \u00b7 f) / 2</f>
+<strong>1. Diagonalen:</strong> <f>A = <fr>e \u00b7 f|2</fr></f>
 <strong>2. Basis \u00d7 H\u00f6he:</strong> <f>A = a \u00b7 h</f>
 e, f = Diagonalen; a = Seite; h = H\u00f6he`,
       },
@@ -181,13 +181,13 @@ e, f = Diagonalen; a = Seite; h = H\u00f6he`,
         q: 'Wie berechnet man die Fl\u00e4che eines Deltoids?',
         a: `<strong>Deltoid (Drachenviereck):</strong>
 Die Diagonalen stehen senkrecht aufeinander.<br>
-<f>A = (e \u00b7 f) / 2</f>
+<f>A = <fr>e \u00b7 f|2</fr></f>
 e, f = die beiden Diagonalen`,
       },
       {
         q: 'Wie berechnet man die Fl\u00e4che eines Trapez?',
         a: `<strong>Trapez (a \u2225 c):</strong>
-<f>A = (a + c) / 2 \u00b7 h</f>
+<f>A = <fr>a + c|2</fr> \u00b7 h</f>
 a, c = parallele Grundlinien<br>
 h = senkrechter Abstand zwischen a und c`,
       },
@@ -195,22 +195,22 @@ h = senkrechter Abstand zwischen a und c`,
         q: 'Wie leitet man die Formel f\u00fcr Raute/Deltoid her?',
         a: `<strong>Zerlegung in Dreiecke!</strong>
 Durch beide Diagonalen in 4 Dreiecke zerlegen.<br>
-Jedes Dreieck: \u00bd \u00b7 (e/2) \u00b7 (f/2) \u2014 \u00d7 4 ergibt:<br>
-<f>A = e\u00b7f / 2</f>`,
+Jedes Dreieck: \u00bd \u00b7 <fr>e|2</fr> \u00b7 <fr>f|2</fr> \u2014 \u00d7 4 ergibt:<br>
+<f>A = <fr>e \u00b7 f|2</fr></f>`,
       },
       {
         q: 'Wie leitet man die Trapezformel her?',
         a: `<strong>Erg\u00e4nzung zum Parallelogramm:</strong>
 Zwei gleiche Trapeze zusammenlegen \u2192 Parallelogramm.<br>
 Parallelogramm: A = (a+c) \u00b7 h \u2014 Trapez = H\u00e4lfte:<br>
-<f>A = (a + c) / 2 \u00b7 h</f>`,
+<f>A = <fr>a + c|2</fr> \u00b7 h</f>`,
       },
       {
         q: 'Umkehraufgabe: Seite/H\u00f6he aus Fl\u00e4cheninhalt berechnen',
         a: `<strong>Formel nach der gesuchten Gr\u00f6\u00dfe umformen.</strong>
 Beispiel Trapez, h gesucht:<br>
-A = (a+c)/2 \u00b7 h &nbsp;|&nbsp; :(a+c)/2<br>
-<f>h = 2\u00b7A / (a + c)</f>`,
+A = <fr>a+c|2</fr> \u00b7 h &nbsp;|&nbsp; :<fr>a+c|2</fr><br>
+<f>h = <fr>2 \u00b7 A|a + c</fr></f>`,
       },
       {
         q: 'Spezielle Trapeze \u2013 was muss ich wissen?',
@@ -251,8 +251,8 @@ const EXERCISE_GROUPS = [
         answer: 32.5,
         label: 'Fl\u00e4che berechnen',
         steps: [
-          'Formel: <sf>A = (a + c) / 2 \u00b7 h</sf>',
-          'Einsetzen: <sf>A = (10 + 3) / 2 \u00b7 5 = 6,5 \u00b7 5 = 32,5 cm\u00b2</sf>',
+          'Formel: <sf>A = <fr>a + c|2</fr> \u00b7 h</sf>',
+          'Einsetzen: <sf>A = <fr>10 + 3|2</fr> \u00b7 5 = 6,5 \u00b7 5 = 32,5 cm\u00b2</sf>',
         ],
       },
       {
@@ -260,21 +260,21 @@ const EXERCISE_GROUPS = [
         given: { a: 9, c: 5, h: 4 },
         answer: 28,
         label: 'Fl\u00e4che berechnen',
-        steps: ['<sf>A = (9 + 5) / 2 \u00b7 4 = 7 \u00b7 4 = 28 cm\u00b2</sf>'],
+        steps: ['<sf>A = <fr>9 + 5|2</fr> \u00b7 4 = 7 \u00b7 4 = 28 cm\u00b2</sf>'],
       },
       {
         find: 'A',
         given: { a: 12, c: 6, h: 7 },
         answer: 63,
         label: 'Fl\u00e4che berechnen',
-        steps: ['<sf>A = (12 + 6) / 2 \u00b7 7 = 9 \u00b7 7 = 63 cm\u00b2</sf>'],
+        steps: ['<sf>A = <fr>12 + 6|2</fr> \u00b7 7 = 9 \u00b7 7 = 63 cm\u00b2</sf>'],
       },
       {
         find: 'A',
         given: { a: 15, c: 7, h: 6 },
         answer: 66,
         label: 'Fl\u00e4che berechnen',
-        steps: ['<sf>A = (15 + 7) / 2 \u00b7 6 = 11 \u00b7 6 = 66 cm\u00b2</sf>'],
+        steps: ['<sf>A = <fr>15 + 7|2</fr> \u00b7 6 = 11 \u00b7 6 = 66 cm\u00b2</sf>'],
       },
     ],
   },
@@ -297,8 +297,8 @@ const EXERCISE_GROUPS = [
         answer: 14,
         label: 'H\u00f6he berechnen',
         steps: [
-          'Formel umstellen: <sf>h = 2 \u00b7 A / (a + c)</sf>',
-          'Einsetzen: <sf>h = 2 \u00b7 91 / (8 + 5) = 182 / 13 = 14 cm</sf>',
+          'Formel umstellen: <sf>h = <fr>2 \u00b7 A|a + c</fr></sf>',
+          'Einsetzen: <sf>h = <fr>2 \u00b7 91|8 + 5</fr> = <fr>182|13</fr> = 14 cm</sf>',
         ],
       },
       {
@@ -306,21 +306,21 @@ const EXERCISE_GROUPS = [
         given: { a: 9, c: 3, A: 30 },
         answer: 5,
         label: 'H\u00f6he berechnen',
-        steps: ['<sf>h = 2 \u00b7 30 / (9 + 3) = 60 / 12 = 5 cm</sf>'],
+        steps: ['<sf>h = <fr>2 \u00b7 30|9 + 3</fr> = <fr>60|12</fr> = 5 cm</sf>'],
       },
       {
         find: 'h',
         given: { a: 10, c: 4, A: 49 },
         answer: 7,
         label: 'H\u00f6he berechnen',
-        steps: ['<sf>h = 2 \u00b7 49 / (10 + 4) = 98 / 14 = 7 cm</sf>'],
+        steps: ['<sf>h = <fr>2 \u00b7 49|10 + 4</fr> = <fr>98|14</fr> = 7 cm</sf>'],
       },
       {
         find: 'h',
         given: { a: 14, c: 6, A: 80 },
         answer: 8,
         label: 'H\u00f6he berechnen',
-        steps: ['<sf>h = 2 \u00b7 80 / (14 + 6) = 160 / 20 = 8 cm</sf>'],
+        steps: ['<sf>h = <fr>2 \u00b7 80|14 + 6</fr> = <fr>160|20</fr> = 8 cm</sf>'],
       },
     ],
   },
@@ -343,8 +343,8 @@ const EXERCISE_GROUPS = [
         answer: 6,
         label: 'Obere Grundlinie berechnen',
         steps: [
-          'Formel umstellen: <sf>c = 2 \u00b7 A / h \u2212 a</sf>',
-          'Einsetzen: <sf>c = 2 \u00b7 30 / 4 \u2212 9 = 15 \u2212 9 = 6 cm</sf>',
+          'Formel umstellen: <sf>c = <fr>2 \u00b7 A|h</fr> \u2212 a</sf>',
+          'Einsetzen: <sf>c = <fr>2 \u00b7 30|4</fr> \u2212 9 = 15 \u2212 9 = 6 cm</sf>',
         ],
       },
       {
@@ -352,21 +352,21 @@ const EXERCISE_GROUPS = [
         given: { a: 12, h: 5, A: 55 },
         answer: 10,
         label: 'Obere Grundlinie berechnen',
-        steps: ['<sf>c = 2 \u00b7 55 / 5 \u2212 12 = 22 \u2212 12 = 10 cm</sf>'],
+        steps: ['<sf>c = <fr>2 \u00b7 55|5</fr> \u2212 12 = 22 \u2212 12 = 10 cm</sf>'],
       },
       {
         find: 'c',
         given: { a: 10, h: 6, A: 48 },
         answer: 6,
         label: 'Obere Grundlinie berechnen',
-        steps: ['<sf>c = 2 \u00b7 48 / 6 \u2212 10 = 16 \u2212 10 = 6 cm</sf>'],
+        steps: ['<sf>c = <fr>2 \u00b7 48|6</fr> \u2212 10 = 16 \u2212 10 = 6 cm</sf>'],
       },
       {
         find: 'c',
         given: { a: 8, h: 3, A: 21 },
         answer: 6,
         label: 'Obere Grundlinie berechnen',
-        steps: ['<sf>c = 2 \u00b7 21 / 3 \u2212 8 = 14 \u2212 8 = 6 cm</sf>'],
+        steps: ['<sf>c = <fr>2 \u00b7 21|3</fr> \u2212 8 = 14 \u2212 8 = 6 cm</sf>'],
       },
     ],
   },
@@ -389,8 +389,8 @@ const EXERCISE_GROUPS = [
         answer: 10,
         label: 'Untere Grundlinie berechnen',
         steps: [
-          'Formel umstellen: <sf>a = 2 \u00b7 A / h \u2212 c</sf>',
-          'Einsetzen: <sf>a = 2 \u00b7 32,5 / 5 \u2212 3 = 13 \u2212 3 = 10 cm</sf>',
+          'Formel umstellen: <sf>a = <fr>2 \u00b7 A|h</fr> \u2212 c</sf>',
+          'Einsetzen: <sf>a = <fr>2 \u00b7 32,5|5</fr> \u2212 3 = 13 \u2212 3 = 10 cm</sf>',
         ],
       },
       {
@@ -398,21 +398,21 @@ const EXERCISE_GROUPS = [
         given: { c: 4, h: 8, A: 60 },
         answer: 11,
         label: 'Untere Grundlinie berechnen',
-        steps: ['<sf>a = 2 \u00b7 60 / 8 \u2212 4 = 15 \u2212 4 = 11 cm</sf>'],
+        steps: ['<sf>a = <fr>2 \u00b7 60|8</fr> \u2212 4 = 15 \u2212 4 = 11 cm</sf>'],
       },
       {
         find: 'a',
         given: { c: 5, h: 6, A: 57 },
         answer: 14,
         label: 'Untere Grundlinie berechnen',
-        steps: ['<sf>a = 2 \u00b7 57 / 6 \u2212 5 = 19 \u2212 5 = 14 cm</sf>'],
+        steps: ['<sf>a = <fr>2 \u00b7 57|6</fr> \u2212 5 = 19 \u2212 5 = 14 cm</sf>'],
       },
       {
         find: 'a',
         given: { c: 6, h: 4, A: 34 },
         answer: 11,
         label: 'Untere Grundlinie berechnen',
-        steps: ['<sf>a = 2 \u00b7 34 / 4 \u2212 6 = 17 \u2212 6 = 11 cm</sf>'],
+        steps: ['<sf>a = <fr>2 \u00b7 34|4</fr> \u2212 6 = 17 \u2212 6 = 11 cm</sf>'],
       },
     ],
   },

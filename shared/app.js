@@ -5,10 +5,13 @@
    ══════════════════════════════════════════════════════════════ */
 
 // ─── Shorthand tag expansion ──────────────────────────────────
-// <f>...</f>  -> formula block in card answers
-// <sf>...</sf> -> inline formula in exercise steps
+// <f>...</f>   -> formula block in card answers
+// <sf>...</sf>  -> inline formula in exercise steps
+// <fr>n|d</fr> -> vertical fraction (numerator | denominator)
 function expandTags(html) {
   return html
+    .replace(/<fr>([\s\S]*?)\|([\s\S]*?)<\/fr>/g,
+      '<span class="frac"><span class="frac-num">$1</span><span class="frac-den">$2</span></span>')
     .replace(/<f>([\s\S]*?)<\/f>/g,  '<span class="formula">$1</span>')
     .replace(/<sf>([\s\S]*?)<\/sf>/g, '<span class="step-formula">$1</span>');
 }

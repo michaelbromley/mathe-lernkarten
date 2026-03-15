@@ -87,6 +87,8 @@ const EXERCISE_GROUPS = [
 ## Shorthand Tags
 - `<f>...</f>` in card answers: styled formula block
 - `<sf>...</sf>` in exercise steps: inline formula
+- `<fr>numerator|denominator</fr>` vertical fraction (works inside `<f>` and `<sf>` tags)
+  - Example: `<f>A = <fr>a + c|2</fr> · h</f>` renders A = (a+c)/2 · h with a proper fraction
 
 ## Available Diagrams
 - `trapez` — standard trapezoid with a, c, h labels
