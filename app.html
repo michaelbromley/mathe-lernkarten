@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernkarten</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/style.css">
+</head>
+<body>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════ -->
+<nav class="topbar">
+  <a class="topbar-back" href="./">&#8592; Alle SA</a>
+  <div class="topbar-brand">Laden...</div>
+  <button class="tab-btn active" onclick="switchTab('lernkarten', this)">&#128218; Lernkarten</button>
+  <button class="tab-btn"        onclick="switchTab('uebungen',   this)">&#9998;&#65039; Übungen</button>
+  <div class="nav-score" id="nav-score" style="display:none">
+    <span id="nav-correct">0</span>/<span id="nav-total">0</span> &#10003;
+  </div>
+  <button class="toc-toggle" id="toc-toggle-btn" onclick="toggleToc()">
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <rect x="1" y="2.5"  width="13" height="1.5" rx=".75" fill="currentColor"/>
+      <rect x="1" y="6.75" width="9"  height="1.5" rx=".75" fill="currentColor"/>
+      <rect x="1" y="11"   width="11" height="1.5" rx=".75" fill="currentColor"/>
+    </svg>
+    Inhalt
+  </button>
+</nav>
+
+<!-- ═══ TOC ════════════════════════════════════════════════════ -->
+<aside class="toc-sidebar" id="toc-sidebar">
+  <div class="toc-head">Inhaltsverzeichnis</div>
+  <div id="toc-inner"></div>
+</aside>
+
+<!-- ═══ LERNKARTEN PAGE ════════════════════════════════════════ -->
+<div class="page active" id="page-lernkarten">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="badge">Laden...</div>
+      <h2>Lern<span>karten</span></h2>
+      <p>Karte anklicken zum Umdrehen &nbsp;&middot;&nbsp;
+         <span id="flip-count">0</span> von <span id="total-count">0</span> gesehen</p>
+    </div>
+    <div id="flashcard-sections"></div>
+  </div>
+  <div class="progress-strip">
+    <span>Fortschritt</span>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <span id="progress-label">0 %</span>
+  </div>
+</div>
+
+<!-- ═══ ÜBUNGEN PAGE ═══════════════════════════════════════════ -->
+<div class="page" id="page-uebungen">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="badge">Übungsaufgaben</div>
+      <h2>Übungen</h2>
+      <p>Finde die gesuchte Größe</p>
+    </div>
+    <div class="ex-score-bar">
+      Richtig beantwortet:
+      <span class="ex-score-val">
+        <span id="ex-correct">0</span> / <span id="ex-total">0</span>
+      </span>
+    </div>
+    <div id="exercise-groups"></div>
+  </div>
+</div>
+
+<!-- ═══ Dynamic data loading ══════════════════════════════════ -->
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const saId = params.get('sa');
+  if (!saId) { window.location.href = './'; return; }
+
+  document.title = 'Lernkarten – ' + saId;
+
+  const dataScript = document.createElement('script');
+  dataScript.src = 'sa/' + encodeURIComponent(saId) + '/data.js';
+  dataScript.onload = function() {
+    document.title = SA_META.subject + ' – ' + SA_META.title;
+    const diagramScript = document.createElement('script');
+    diagramScript.src = 'shared/diagrams.js';
+    diagramScript.onload = function() {
+      const appScript = document.createElement('script');
+      appScript.src = 'shared/app.js';
+      document.body.appendChild(appScript);
+    };
+    document.body.appendChild(diagramScript);
+  };
+  dataScript.onerror = function() {
+    document.querySelector('.page-inner').innerHTML =
+      '<div class="page-header"><h2>SA nicht gefunden</h2>' +
+      '<p>Keine Daten für <strong>' + saId + '</strong> gefunden.</p>' +
+      '<p><a href="index.html">Zurück zur Übersicht</a></p></div>';
+  };
+  document.body.appendChild(dataScript);
+})();
+</script>
+</body>
+</html>
