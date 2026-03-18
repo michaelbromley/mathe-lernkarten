@@ -151,6 +151,27 @@ function buildFlashcards() {
 
       grid.appendChild(wrap);
     });
+
+    // "Übungen →" link if matching exercise groups exist
+    const prefix = sec.id.replace('sec-', 'ex-');
+    const matchingGroup = EXERCISE_GROUPS.find(g => g.id.startsWith(prefix));
+    if (matchingGroup) {
+      const link = document.createElement('a');
+      link.className = 'fc-exercise-link';
+      link.href = '#';
+      link.innerHTML = '\u00dcbungen \u2192';
+      link.onclick = (e) => {
+        e.preventDefault();
+        const btn = [...document.querySelectorAll('.tab-btn')]
+          .find(b => b.getAttribute('onclick').includes('uebungen'));
+        if (btn) switchTab('uebungen', btn);
+        setTimeout(() => {
+          const el = document.getElementById(matchingGroup.id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      };
+      section.appendChild(link);
+    }
   });
 
   document.getElementById('total-count').textContent = totalCards;
@@ -172,13 +193,11 @@ function buildExercises() {
   const container = document.getElementById('exercise-groups');
   if (!container) return;
 
-  // Build exercise header from data
+  // Build exercise header from SA meta
   const exHeader = document.querySelector('#page-uebungen .page-header');
   if (exHeader && EXERCISE_GROUPS.length > 0) {
-    const firstGroup = EXERCISE_GROUPS[0];
-    const topicName = firstGroup.label.split(' \u2013 ')[0].trim();
-    exHeader.querySelector('.badge').textContent = '\u00dcbungsaufgaben';
-    exHeader.querySelector('h2').innerHTML = topicName + ' \u2013 <span>Aufgaben</span>';
+    exHeader.querySelector('.badge').textContent = SA_META.title + ' \u00b7 ' + SA_META.date;
+    exHeader.querySelector('h2').innerHTML = '\u00dcbungs<span>aufgaben</span>';
     const desc = exHeader.querySelector('p');
     if (desc) desc.textContent = 'Finde die gesuchte Gr\u00f6\u00dfe';
   }
@@ -187,8 +206,11 @@ function buildExercises() {
 
   EXERCISE_GROUPS.forEach(grp => {
     const groupEl = document.createElement('div');
+    groupEl.className = 'ex-group';
     groupEl.id = grp.id;
-    groupEl.innerHTML = `<div class="section-title" style="margin-bottom:1rem">
+    groupEl.dataset.color = grp.color;
+    groupEl.dataset.label = grp.label;
+    groupEl.innerHTML = `<div class="section-title" style="margin-bottom:1rem; border-bottom-color:${grp.color}">
       <div class="dot" style="background:${grp.color}"></div>${grp.label}</div>`;
     container.appendChild(groupEl);
 
@@ -202,49 +224,82 @@ function buildExercises() {
       const idx = globalExIndex++;
       totalEx++;
 
+      const hasGiven = Object.keys(ex.given).length > 0;
+      const hasDiagram = grp.diagram && DIAGRAM_REGISTRY[grp.diagram];
+      const hasPrompt = !!ex.prompt;
+      const isPromptMode = hasPrompt && !hasDiagram;
+
       // Build given pills from variables definition
       let pillsHTML = '';
-      varNames.forEach(v => {
-        if (v === ex.find) {
-          pillsHTML += `<span class="ex-given-pill unknown">${v} = ? ${unitMap[v]}</span>`;
-        } else if (ex.given[v] !== undefined) {
-          pillsHTML += `<span class="ex-given-pill">${v} = ${fmtV(ex.given[v])} ${unitMap[v]}</span>`;
-        }
-      });
+      if (hasGiven) {
+        varNames.forEach(v => {
+          if (v === ex.find) {
+            pillsHTML += `<span class="ex-given-pill unknown">${v} = ? ${unitMap[v]}</span>`;
+          } else if (ex.given[v] !== undefined) {
+            pillsHTML += `<span class="ex-given-pill">${v} = ${fmtV(ex.given[v])} ${unitMap[v]}</span>`;
+          }
+        });
+      }
 
       // Diagram from registry
       let diagramHTML = '';
-      if (grp.diagram && DIAGRAM_REGISTRY[grp.diagram]) {
+      if (hasDiagram) {
         diagramHTML = DIAGRAM_REGISTRY[grp.diagram](ex.given, ex.find);
       }
 
-      const answerUnit = unitMap[ex.find];
+      const answerUnit = unitMap[ex.find] || '';
+      const unitHTML = answerUnit ? `<span class="ex-unit">${answerUnit}</span>` : '';
       const stepsHTML = ex.steps.map(s => `<div>\u25b8 ${expandTags(s)}</div>`).join('');
+
+      // Prompt-based layout (no diagram) vs diagram layout
+      let bodyHTML;
+      if (isPromptMode) {
+        bodyHTML = `
+          <div class="ex-body ex-body-prompt">
+            <div>
+              <div class="ex-prompt">${expandTags(ex.prompt)}</div>
+              <div class="ex-input-row">
+                <span class="ex-input-label">${ex.find} =</span>
+                <input class="ex-input" type="text" inputmode="decimal"
+                  placeholder="?" id="input-${idx}">
+                ${unitHTML}
+                <button class="ex-check-btn" onclick="checkAnswer(${idx})">Pr\u00fcfen</button>
+              </div>
+              <div class="ex-feedback" id="feedback-${idx}"></div>
+              <button class="ex-show-solution" id="sol-btn-${idx}"
+                onclick="toggleSolution(${idx})">L\u00f6sung anzeigen</button>
+            </div>
+          </div>`;
+      } else {
+        bodyHTML = `
+          <div class="ex-body">
+            <div class="ex-diagram">${diagramHTML}</div>
+            <div>
+              <div class="ex-givens">${pillsHTML}</div>
+              <div class="ex-input-row">
+                <span class="ex-input-label">${ex.find} =</span>
+                <input class="ex-input" type="text" inputmode="decimal"
+                  placeholder="?" id="input-${idx}">
+                ${unitHTML}
+                <button class="ex-check-btn" onclick="checkAnswer(${idx})">Pr\u00fcfen</button>
+              </div>
+              <div class="ex-feedback" id="feedback-${idx}"></div>
+              <button class="ex-show-solution" id="sol-btn-${idx}"
+                onclick="toggleSolution(${idx})">L\u00f6sung anzeigen</button>
+            </div>
+          </div>`;
+      }
 
       const card = document.createElement('div');
       card.className = 'ex-card';
+      card.style.borderLeftColor = grp.color;
       card.innerHTML = `
         <div class="ex-header">
-          <div class="ex-num">${idx + 1}</div>
+          <div class="ex-num" style="color:${grp.color}">${idx + 1}</div>
           <div class="ex-title">Aufgabe ${idx + 1} \u2013 ${ex.label}</div>
           <div class="ex-find">${ex.find} gesucht</div>
         </div>
-        <div class="ex-body">
-          <div class="ex-diagram">${diagramHTML}</div>
-          <div>
-            <div class="ex-givens">${pillsHTML}</div>
-            <div class="ex-input-row">
-              <span class="ex-input-label">${ex.find} =</span>
-              <input class="ex-input" type="text" inputmode="decimal"
-                placeholder="?" id="input-${idx}">
-              <span class="ex-unit">${answerUnit}</span>
-              <button class="ex-check-btn" onclick="checkAnswer(${idx})">Pr\u00fcfen</button>
-            </div>
-            <div class="ex-feedback" id="feedback-${idx}"></div>
-            <button class="ex-show-solution" id="sol-btn-${idx}"
-              onclick="toggleSolution(${idx})">L\u00f6sung anzeigen</button>
-          </div>
-        </div>
+        ${bodyHTML}
         <div class="ex-solution" id="solution-${idx}">
           <div class="ex-solution-title">L\u00f6sungsweg</div>
           <div class="ex-steps">${stepsHTML}</div>
@@ -271,22 +326,33 @@ function getAllExercises() {
 
 let _allExercises;
 
+function parseInput(raw) {
+  raw = raw.trim().replace(',', '.');
+  if (raw.includes('/')) {
+    const parts = raw.split('/');
+    if (parts.length === 2) return parseFloat(parts[0]) / parseFloat(parts[1]);
+  }
+  return parseFloat(raw);
+}
+
 function checkAnswer(idx) {
   if (!_allExercises) _allExercises = getAllExercises();
   const ex = _allExercises[idx];
   const input    = document.getElementById(`input-${idx}`);
   const feedback = document.getElementById(`feedback-${idx}`);
-  const val = parseFloat(input.value.trim().replace(',', '.'));
+  const val = parseInput(input.value);
 
   if (isNaN(val)) {
-    feedback.textContent = 'Bitte eine Zahl eingeben.';
+    feedback.textContent = 'Bitte eine Zahl eingeben (z.B. 5 oder 3/4).';
     feedback.className = 'ex-feedback err';
     return;
   }
-  const answerUnit = ex._unitMap[ex.find];
+  const answerUnit = ex._unitMap[ex.find] || '';
+  const displayAnswer = ex.answerDisplay || fmtV(ex.answer);
+  const unitSuffix = answerUnit ? ' ' + answerUnit : '';
   if (Math.abs(val - ex.answer) <= 0.05) {
     input.className = 'ex-input correct';
-    feedback.textContent = `\u2713 Richtig! ${ex.find} = ${fmtV(ex.answer)} ${answerUnit}`;
+    feedback.textContent = `\u2713 Richtig! ${ex.find} = ${displayAnswer}${unitSuffix}`;
     feedback.className = 'ex-feedback ok';
     document.getElementById(`solution-${idx}`).classList.add('visible');
     if (!input.dataset.counted) {
@@ -315,8 +381,49 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// ─── Sticky section indicator ─────────────────────────────────
+function initSectionIndicator() {
+  const indicator = document.getElementById('ex-section-indicator');
+  if (!indicator) return;
+  const dot = indicator.querySelector('.dot');
+  const label = indicator.querySelector('.indicator-label');
+  const groups = document.querySelectorAll('.ex-group');
+  if (groups.length === 0) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const grp = entry.target;
+        dot.style.background = grp.dataset.color;
+        label.textContent = grp.dataset.label;
+      }
+    });
+  }, {
+    rootMargin: '-' + (56 + 34 + 20) + 'px 0px -70% 0px',
+    threshold: 0,
+  });
+
+  groups.forEach(g => observer.observe(g));
+
+  // Show/hide indicator based on which tab is active + scroll position
+  function updateVisibility() {
+    const exPage = document.getElementById('page-uebungen');
+    const isExTab = exPage && exPage.classList.contains('active');
+    indicator.classList.toggle('visible', isExTab && window.scrollY > 200);
+  }
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+
+  // Also update on tab switch
+  const origSwitchTab = window.switchTab;
+  window.switchTab = function(pageId, btn) {
+    origSwitchTab(pageId, btn);
+    updateVisibility();
+  };
+}
+
 // ─── Init ─────────────────────────────────────────────────────
 initHeader();
 buildToc();
 buildFlashcards();
 buildExercises();
+initSectionIndicator();

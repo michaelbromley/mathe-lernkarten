@@ -233,8 +233,448 @@ Je nach Figur die passende Methode w\u00e4hlen!`,
 // ─── Exercise groups ─────────────────────────────────────────────────────────
 
 const EXERCISE_GROUPS = [
+
+  // ── Bruchrechnung ──────────────────────────────────────────────────────────
+
   {
-    id: 'ex-group-A',
+    id: 'ex-bruch-add',
+    label: 'Br\u00fcche \u2013 Addition & Subtraktion',
+    color: '#4a9b6f',
+    diagram: null,
+    variables: [
+      { name: 'Ergebnis', label: 'Ergebnis', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 5/6,
+        answerDisplay: '5/6',
+        prompt: '<fr>2|3</fr> + <fr>1|6</fr> = ?',
+        label: 'Br\u00fcche addieren',
+        steps: [
+          'Gemeinsamen Nenner finden: kgV(3, 6) = 6',
+          '<sf><fr>2|3</fr> = <fr>4|6</fr></sf>',
+          '<sf><fr>4|6</fr> + <fr>1|6</fr> = <fr>5|6</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 5/12,
+        answerDisplay: '5/12',
+        prompt: '<fr>3|4</fr> \u2212 <fr>1|3</fr> = ?',
+        label: 'Br\u00fcche subtrahieren',
+        steps: [
+          'Gemeinsamen Nenner finden: kgV(4, 3) = 12',
+          '<sf><fr>3|4</fr> = <fr>9|12</fr></sf> und <sf><fr>1|3</fr> = <fr>4|12</fr></sf>',
+          '<sf><fr>9|12</fr> \u2212 <fr>4|12</fr> = <fr>5|12</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 9/10,
+        answerDisplay: '9/10',
+        prompt: '<fr>1|2</fr> + <fr>2|5</fr> = ?',
+        label: 'Br\u00fcche addieren',
+        steps: [
+          'Gemeinsamen Nenner finden: kgV(2, 5) = 10',
+          '<sf><fr>1|2</fr> = <fr>5|10</fr></sf> und <sf><fr>2|5</fr> = <fr>4|10</fr></sf>',
+          '<sf><fr>5|10</fr> + <fr>4|10</fr> = <fr>9|10</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 7/12,
+        answerDisplay: '7/12',
+        prompt: '<fr>5|6</fr> \u2212 <fr>1|4</fr> = ?',
+        label: 'Br\u00fcche subtrahieren',
+        steps: [
+          'Gemeinsamen Nenner finden: kgV(6, 4) = 12',
+          '<sf><fr>5|6</fr> = <fr>10|12</fr></sf> und <sf><fr>1|4</fr> = <fr>3|12</fr></sf>',
+          '<sf><fr>10|12</fr> \u2212 <fr>3|12</fr> = <fr>7|12</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 5/8,
+        answerDisplay: '5/8',
+        prompt: '<fr>3|8</fr> + <fr>1|4</fr> = ?',
+        label: 'Br\u00fcche addieren',
+        steps: [
+          'Gemeinsamen Nenner finden: kgV(8, 4) = 8',
+          '<sf><fr>1|4</fr> = <fr>2|8</fr></sf>',
+          '<sf><fr>3|8</fr> + <fr>2|8</fr> = <fr>5|8</fr></sf>',
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-bruch-mult',
+    label: 'Br\u00fcche \u2013 Multiplikation & Division',
+    color: '#4a9b6f',
+    diagram: null,
+    variables: [
+      { name: 'Ergebnis', label: 'Ergebnis', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 1/2,
+        answerDisplay: '1/2',
+        prompt: '<fr>2|3</fr> \u00b7 <fr>3|4</fr> = ?',
+        label: 'Br\u00fcche multiplizieren',
+        steps: [
+          'Z\u00e4hler \u00d7 Z\u00e4hler, Nenner \u00d7 Nenner:',
+          '<sf><fr>2 \u00b7 3|3 \u00b7 4</fr> = <fr>6|12</fr> = <fr>1|2</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 1/2,
+        answerDisplay: '1/2',
+        prompt: '<fr>3|5</fr> \u00b7 <fr>5|6</fr> = ?',
+        label: 'Br\u00fcche multiplizieren',
+        steps: [
+          '<sf><fr>3 \u00b7 5|5 \u00b7 6</fr> = <fr>15|30</fr> = <fr>1|2</fr></sf>',
+          'Tipp: 5 im Z\u00e4hler und Nenner k\u00fcrzen!',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 3/2,
+        answerDisplay: '3/2',
+        prompt: '<fr>3|4</fr> : <fr>1|2</fr> = ?',
+        label: 'Br\u00fcche dividieren',
+        steps: [
+          'Mit dem Kehrwert multiplizieren:',
+          '<sf><fr>3|4</fr> \u00b7 <fr>2|1</fr> = <fr>6|4</fr> = <fr>3|2</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 5/6,
+        answerDisplay: '5/6',
+        prompt: '<fr>2|3</fr> : <fr>4|5</fr> = ?',
+        label: 'Br\u00fcche dividieren',
+        steps: [
+          'Mit dem Kehrwert multiplizieren:',
+          '<sf><fr>2|3</fr> \u00b7 <fr>5|4</fr> = <fr>10|12</fr> = <fr>5|6</fr></sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 1/4,
+        answerDisplay: '1/4',
+        prompt: '<fr>5|6</fr> \u00b7 <fr>3|10</fr> = ?',
+        label: 'Br\u00fcche multiplizieren',
+        steps: [
+          '<sf><fr>5 \u00b7 3|6 \u00b7 10</fr> = <fr>15|60</fr> = <fr>1|4</fr></sf>',
+          'Tipp: Vorher 5 und 10 k\u00fcrzen, 3 und 6 k\u00fcrzen!',
+        ],
+      },
+    ],
+  },
+
+  // ── Gleichungen ────────────────────────────────────────────────────────────
+
+  {
+    id: 'ex-gleich-einfach',
+    label: 'Gleichungen \u2013 einstufig',
+    color: '#9b4a8c',
+    diagram: null,
+    variables: [
+      { name: 'x', label: 'x', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'x',
+        given: {},
+        answer: 8,
+        prompt: 'x + 7 = 15',
+        label: 'Einstufige Gleichung',
+        steps: [
+          '<sf>x + 7 = 15 &nbsp;| \u2212 7</sf>',
+          '<sf>x = 8</sf>',
+          'Probe: 8 + 7 = 15 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 15,
+        prompt: 'x \u2212 3 = 12',
+        label: 'Einstufige Gleichung',
+        steps: [
+          '<sf>x \u2212 3 = 12 &nbsp;| + 3</sf>',
+          '<sf>x = 15</sf>',
+          'Probe: 15 \u2212 3 = 12 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 7,
+        prompt: '4 \u00b7 x = 28',
+        label: 'Einstufige Gleichung',
+        steps: [
+          '<sf>4x = 28 &nbsp;| : 4</sf>',
+          '<sf>x = 7</sf>',
+          'Probe: 4 \u00b7 7 = 28 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 15,
+        prompt: '<fr>x|5</fr> = 3',
+        label: 'Einstufige Gleichung',
+        steps: [
+          '<sf><fr>x|5</fr> = 3 &nbsp;| \u00b7 5</sf>',
+          '<sf>x = 15</sf>',
+          'Probe: 15 : 5 = 3 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 8,
+        prompt: '2x = 16',
+        label: 'Einstufige Gleichung',
+        steps: [
+          '<sf>2x = 16 &nbsp;| : 2</sf>',
+          '<sf>x = 8</sf>',
+          'Probe: 2 \u00b7 8 = 16 \u2713',
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-gleich-mehr',
+    label: 'Gleichungen \u2013 mehrstufig',
+    color: '#9b4a8c',
+    diagram: null,
+    variables: [
+      { name: 'x', label: 'x', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'x',
+        given: {},
+        answer: 5,
+        prompt: '3x + 5 = 20',
+        label: 'Mehrstufige Gleichung',
+        steps: [
+          '<sf>3x + 5 = 20 &nbsp;| \u2212 5</sf>',
+          '<sf>3x = 15 &nbsp;| : 3</sf>',
+          '<sf>x = 5</sf>',
+          'Probe: 3 \u00b7 5 + 5 = 15 + 5 = 20 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 7,
+        prompt: '2x \u2212 3 = 11',
+        label: 'Mehrstufige Gleichung',
+        steps: [
+          '<sf>2x \u2212 3 = 11 &nbsp;| + 3</sf>',
+          '<sf>2x = 14 &nbsp;| : 2</sf>',
+          '<sf>x = 7</sf>',
+          'Probe: 2 \u00b7 7 \u2212 3 = 14 \u2212 3 = 11 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 5,
+        prompt: '5x + 8 = 33',
+        label: 'Mehrstufige Gleichung',
+        steps: [
+          '<sf>5x + 8 = 33 &nbsp;| \u2212 8</sf>',
+          '<sf>5x = 25 &nbsp;| : 5</sf>',
+          '<sf>x = 5</sf>',
+          'Probe: 5 \u00b7 5 + 8 = 25 + 8 = 33 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 6,
+        prompt: '4x \u2212 6 = 18',
+        label: 'Mehrstufige Gleichung',
+        steps: [
+          '<sf>4x \u2212 6 = 18 &nbsp;| + 6</sf>',
+          '<sf>4x = 24 &nbsp;| : 4</sf>',
+          '<sf>x = 6</sf>',
+          'Probe: 4 \u00b7 6 \u2212 6 = 24 \u2212 6 = 18 \u2713',
+        ],
+      },
+      {
+        find: 'x',
+        given: {},
+        answer: 7,
+        prompt: '3x \u2212 4 = 17',
+        label: 'Mehrstufige Gleichung',
+        steps: [
+          '<sf>3x \u2212 4 = 17 &nbsp;| + 4</sf>',
+          '<sf>3x = 21 &nbsp;| : 3</sf>',
+          '<sf>x = 7</sf>',
+          'Probe: 3 \u00b7 7 \u2212 4 = 21 \u2212 4 = 17 \u2713',
+        ],
+      },
+    ],
+  },
+
+  // ── Proportionalit\u00e4t ─────────────────────────────────────────────────────
+
+  {
+    id: 'ex-prop-direkt',
+    label: 'Direkte Proportionalit\u00e4t',
+    color: '#4a9b6f',
+    diagram: null,
+    variables: [
+      { name: 'Ergebnis', label: 'Ergebnis', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 20,
+        prompt: '3 kg kosten 12 \u20ac. Was kosten 5 kg?',
+        label: 'Dreisatz',
+        steps: [
+          'Preis pro kg: <sf>k = <fr>12|3</fr> = 4 \u20ac/kg</sf>',
+          '<sf>5 \u00b7 4 = 20 \u20ac</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 5,
+        prompt: 'y = k \u00b7 x. Bei x = 4 ist y = 20. Wie gro\u00df ist k?',
+        label: 'k berechnen',
+        steps: [
+          '<sf>k = <fr>y|x</fr> = <fr>20|4</fr> = 5</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 35,
+        prompt: '2 m Stoff kosten 14 \u20ac. Was kosten 5 m?',
+        label: 'Dreisatz',
+        steps: [
+          'Preis pro Meter: <sf>k = <fr>14|2</fr> = 7 \u20ac/m</sf>',
+          '<sf>5 \u00b7 7 = 35 \u20ac</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 24,
+        prompt: 'k = 3 und x = 8. Berechne y = k \u00b7 x.',
+        label: 'Wert berechnen',
+        steps: [
+          '<sf>y = k \u00b7 x = 3 \u00b7 8 = 24</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 15,
+        prompt: '4 Brote kosten 6 \u20ac. Was kosten 10 Brote?',
+        label: 'Dreisatz',
+        steps: [
+          'Preis pro Brot: <sf>k = <fr>6|4</fr> = 1,5 \u20ac</sf>',
+          '<sf>10 \u00b7 1,5 = 15 \u20ac</sf>',
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-prop-indirekt',
+    label: 'Indirekte Proportionalit\u00e4t',
+    color: '#4a9b6f',
+    diagram: null,
+    variables: [
+      { name: 'Ergebnis', label: 'Ergebnis', unit: '' },
+    ],
+    exercises: [
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 3,
+        prompt: '6 Arbeiter brauchen 4 Stunden. Wie lange brauchen 8 Arbeiter?',
+        label: 'Indirekte Proportionalit\u00e4t',
+        steps: [
+          '<sf>k = 6 \u00b7 4 = 24</sf> (Arbeiterstunden)',
+          '<sf>8 \u00b7 ? = 24</sf>',
+          '<sf>? = <fr>24|8</fr> = 3 Stunden</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 60,
+        prompt: 'x \u00b7 y = k. Bei x = 5, y = 12. Wie gro\u00df ist k?',
+        label: 'k berechnen',
+        steps: [
+          '<sf>k = x \u00b7 y = 5 \u00b7 12 = 60</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 8,
+        prompt: '4 Pumpen brauchen 6 Stunden. Wie lange brauchen 3 Pumpen?',
+        label: 'Indirekte Proportionalit\u00e4t',
+        steps: [
+          '<sf>k = 4 \u00b7 6 = 24</sf>',
+          '<sf>3 \u00b7 ? = 24</sf>',
+          '<sf>? = <fr>24|3</fr> = 8 Stunden</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 4,
+        prompt: 'k = 36 und x = 9. Berechne y = <fr>k|x</fr>.',
+        label: 'Wert berechnen',
+        steps: [
+          '<sf>y = <fr>k|x</fr> = <fr>36|9</fr> = 4</sf>',
+        ],
+      },
+      {
+        find: 'Ergebnis',
+        given: {},
+        answer: 4,
+        prompt: '5 Maschinen brauchen 8 Stunden. Wie lange brauchen 10 Maschinen?',
+        label: 'Indirekte Proportionalit\u00e4t',
+        steps: [
+          '<sf>k = 5 \u00b7 8 = 40</sf>',
+          '<sf>10 \u00b7 ? = 40</sf>',
+          '<sf>? = <fr>40|10</fr> = 4 Stunden</sf>',
+        ],
+      },
+    ],
+  },
+
+  // ── Vierecke & Fl\u00e4chenberechnung ──────────────────────────────────────────
+
+  {
+    id: 'ex-viereck-A',
     label: 'Trapez \u2013 A berechnen',
     color: '#e8522a',
     diagram: 'trapez',
@@ -276,11 +716,18 @@ const EXERCISE_GROUPS = [
         label: 'Fl\u00e4che berechnen',
         steps: ['<sf>A = <fr>15 + 7|2</fr> \u00b7 6 = 11 \u00b7 6 = 66 cm\u00b2</sf>'],
       },
+      {
+        find: 'A',
+        given: { a: 8, c: 4, h: 6 },
+        answer: 36,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = <fr>8 + 4|2</fr> \u00b7 6 = 6 \u00b7 6 = 36 cm\u00b2</sf>'],
+      },
     ],
   },
 
   {
-    id: 'ex-group-h',
+    id: 'ex-viereck-h',
     label: 'Trapez \u2013 h berechnen',
     color: '#4a9b6f',
     diagram: 'trapez',
@@ -322,11 +769,18 @@ const EXERCISE_GROUPS = [
         label: 'H\u00f6he berechnen',
         steps: ['<sf>h = <fr>2 \u00b7 80|14 + 6</fr> = <fr>160|20</fr> = 8 cm</sf>'],
       },
+      {
+        find: 'h',
+        given: { a: 12, c: 8, A: 60 },
+        answer: 6,
+        label: 'H\u00f6he berechnen',
+        steps: ['<sf>h = <fr>2 \u00b7 60|12 + 8</fr> = <fr>120|20</fr> = 6 cm</sf>'],
+      },
     ],
   },
 
   {
-    id: 'ex-group-c',
+    id: 'ex-viereck-c',
     label: 'Trapez \u2013 c berechnen',
     color: '#9b4a8c',
     diagram: 'trapez',
@@ -368,11 +822,18 @@ const EXERCISE_GROUPS = [
         label: 'Obere Grundlinie berechnen',
         steps: ['<sf>c = <fr>2 \u00b7 21|3</fr> \u2212 8 = 14 \u2212 8 = 6 cm</sf>'],
       },
+      {
+        find: 'c',
+        given: { a: 11, h: 5, A: 45 },
+        answer: 7,
+        label: 'Obere Grundlinie berechnen',
+        steps: ['<sf>c = <fr>2 \u00b7 45|5</fr> \u2212 11 = 18 \u2212 11 = 7 cm</sf>'],
+      },
     ],
   },
 
   {
-    id: 'ex-group-a',
+    id: 'ex-viereck-a',
     label: 'Trapez \u2013 a berechnen',
     color: '#d4a017',
     diagram: 'trapez',
@@ -413,6 +874,13 @@ const EXERCISE_GROUPS = [
         answer: 11,
         label: 'Untere Grundlinie berechnen',
         steps: ['<sf>a = <fr>2 \u00b7 34|4</fr> \u2212 6 = 17 \u2212 6 = 11 cm</sf>'],
+      },
+      {
+        find: 'a',
+        given: { c: 5, h: 7, A: 56 },
+        answer: 11,
+        label: 'Untere Grundlinie berechnen',
+        steps: ['<sf>a = <fr>2 \u00b7 56|7</fr> \u2212 5 = 16 \u2212 5 = 11 cm</sf>'],
       },
     ],
   },

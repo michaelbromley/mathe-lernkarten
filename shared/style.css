@@ -181,6 +181,16 @@ body::before {
   gap: 1.2rem;
 }
 
+.fc-exercise-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1rem; padding: 0.4rem 0.9rem;
+  background: none; border: 1.5px solid rgba(26,39,68,0.18);
+  border-radius: 6px; font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 600; color: var(--muted);
+  cursor: pointer; transition: all 0.15s; text-decoration: none;
+}
+.fc-exercise-link:hover { border-color: var(--accent); color: var(--accent); }
+
 /* flip card */
 .card-wrap { min-height: 210px; perspective: 1200px; cursor: pointer; }
 .card-inner {
@@ -270,6 +280,20 @@ body::before {
   transition: width 0.35s ease;
 }
 
+/* ─── Exercise section indicator (sticky) ────────────────────── */
+.ex-section-indicator {
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  height: 34px; background: var(--white);
+  border-bottom: 1px solid rgba(26,39,68,0.08);
+  display: none; align-items: center; padding: 0 1.5rem;
+  font-family: 'Fraunces', serif; font-size: 0.8rem; font-weight: 700;
+  color: var(--navy); z-index: 95; gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(26,39,68,0.06);
+  transition: opacity 0.2s;
+}
+.ex-section-indicator.visible { display: flex; }
+.ex-section-indicator .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
 /* ─── Exercises ──────────────────────────────────────────────── */
 .ex-score-bar {
   display: flex; align-items: center; gap: 1rem;
@@ -280,11 +304,18 @@ body::before {
   font-size: 1.5rem; font-weight: 900; color: var(--navy);
 }
 
+.ex-group {
+  margin-bottom: 2.5rem; padding-top: 1rem;
+  border-top: 3px solid rgba(26,39,68,0.06);
+}
+.ex-group:first-child { border-top: none; padding-top: 0; }
+
 .ex-card {
   background: var(--white); border-radius: 14px;
   box-shadow: 4px 6px 22px rgba(26,39,68,0.09);
   border: 2px solid rgba(26,39,68,0.06);
   overflow: hidden; margin-bottom: 1.4rem;
+  border-left: 4px solid var(--accent);
 }
 .ex-header {
   background: var(--navy); color: var(--bg);
@@ -308,7 +339,18 @@ body::before {
   display: grid; grid-template-columns: auto 1fr;
   gap: 1.1rem; align-items: center;
 }
+.ex-body.ex-body-prompt {
+  grid-template-columns: 1fr;
+}
 .ex-diagram svg { display: block; }
+
+.ex-prompt {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem; font-weight: 700;
+  background: #f0ece2; padding: 0.6rem 1rem;
+  border-radius: 8px; border-left: 3px solid var(--accent);
+  margin-bottom: 0.5rem;
+}
 
 .ex-givens { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.9rem; }
 .ex-given-pill {
@@ -430,8 +472,13 @@ body::before {
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .cards { grid-template-columns: 1fr; }
-  .ex-body { grid-template-columns: 1fr; }
-  .topbar-brand { font-size: 0.9rem; padding: 0 0.8rem; }
-  .tab-btn { padding: 0 0.75rem; font-size: 0.78rem; }
+  .ex-body, .ex-body.ex-body-prompt { grid-template-columns: 1fr; }
+  .topbar-brand { font-size: 0.82rem; padding: 0 0.5rem; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .topbar-back { font-size: 0.75rem; padding: 0 0.4rem; overflow: hidden; max-width: 2rem; }
+  .tab-btn { padding: 0 0.55rem; font-size: 0.72rem; }
+  .toc-toggle { padding: 0 0.6rem; font-size: 0.7rem; }
+  .toc-label { display: none; }
+  .nav-score { font-size: 0.68rem; padding: 0.15rem 0.5rem; margin-right: 0.2rem; }
   .sa-grid { grid-template-columns: 1fr; }
+  .ex-section-indicator { font-size: 0.72rem; padding: 0 1rem; }
 }
