@@ -832,6 +832,249 @@ const EXERCISE_GROUPS = [
     ],
   },
 
+  // ── Raute ──────────────────────────────────────────────────────────────────
+
+  {
+    id: 'ex-raute-A',
+    label: 'Raute \u2013 A berechnen',
+    color: '#d4a017',
+    diagram: 'raute',
+    variables: [
+      { name: 'e', label: 'Diagonale e', unit: 'cm' },
+      { name: 'f', label: 'Diagonale f', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'A',
+        given: { e: 10, f: 6 },
+        answer: 30,
+        label: 'Fl\u00e4che berechnen',
+        steps: [
+          'Formel: <sf>A = <fr>e \u00b7 f|2</fr></sf>',
+          'Einsetzen: <sf>A = <fr>10 \u00b7 6|2</fr> = <fr>60|2</fr> = 30 cm\u00b2</sf>',
+        ],
+      },
+      {
+        find: 'A',
+        given: { e: 8, f: 12 },
+        answer: 48,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = <fr>8 \u00b7 12|2</fr> = <fr>96|2</fr> = 48 cm\u00b2</sf>'],
+      },
+      {
+        find: 'A',
+        given: { e: 14, f: 8 },
+        answer: 56,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = <fr>14 \u00b7 8|2</fr> = <fr>112|2</fr> = 56 cm\u00b2</sf>'],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-raute-e',
+    label: 'Raute \u2013 Diagonale berechnen',
+    color: '#d4a017',
+    diagram: 'raute',
+    variables: [
+      { name: 'e', label: 'Diagonale e', unit: 'cm' },
+      { name: 'f', label: 'Diagonale f', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'e',
+        given: { f: 8, A: 36 },
+        answer: 9,
+        label: 'Diagonale e berechnen',
+        steps: [
+          'Formel umstellen: <sf>e = <fr>2 \u00b7 A|f</fr></sf>',
+          'Einsetzen: <sf>e = <fr>2 \u00b7 36|8</fr> = <fr>72|8</fr> = 9 cm</sf>',
+        ],
+      },
+      {
+        find: 'e',
+        given: { f: 6, A: 42 },
+        answer: 14,
+        label: 'Diagonale e berechnen',
+        steps: ['<sf>e = <fr>2 \u00b7 42|6</fr> = <fr>84|6</fr> = 14 cm</sf>'],
+      },
+      {
+        find: 'f',
+        given: { e: 10, A: 35 },
+        answer: 7,
+        label: 'Diagonale f berechnen',
+        steps: [
+          'Formel umstellen: <sf>f = <fr>2 \u00b7 A|e</fr></sf>',
+          '<sf>f = <fr>2 \u00b7 35|10</fr> = <fr>70|10</fr> = 7 cm</sf>',
+        ],
+      },
+    ],
+  },
+
+  // ── Deltoid ───────────────────────────────────────────────────────────────
+
+  {
+    id: 'ex-deltoid-A',
+    label: 'Deltoid \u2013 A berechnen',
+    color: '#e8522a',
+    diagram: 'deltoid',
+    variables: [
+      { name: 'e', label: 'Diagonale e', unit: 'cm' },
+      { name: 'f', label: 'Diagonale f', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'A',
+        given: { e: 12, f: 8 },
+        answer: 48,
+        label: 'Fl\u00e4che berechnen',
+        steps: [
+          'Formel: <sf>A = <fr>e \u00b7 f|2</fr></sf>',
+          'Einsetzen: <sf>A = <fr>12 \u00b7 8|2</fr> = <fr>96|2</fr> = 48 cm\u00b2</sf>',
+        ],
+      },
+      {
+        find: 'A',
+        given: { e: 6, f: 10 },
+        answer: 30,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = <fr>6 \u00b7 10|2</fr> = <fr>60|2</fr> = 30 cm\u00b2</sf>'],
+      },
+      {
+        find: 'A',
+        given: { e: 9, f: 14 },
+        answer: 63,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = <fr>9 \u00b7 14|2</fr> = <fr>126|2</fr> = 63 cm\u00b2</sf>'],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-deltoid-e',
+    label: 'Deltoid \u2013 Diagonale berechnen',
+    color: '#e8522a',
+    diagram: 'deltoid',
+    variables: [
+      { name: 'e', label: 'Diagonale e', unit: 'cm' },
+      { name: 'f', label: 'Diagonale f', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'e',
+        given: { f: 10, A: 40 },
+        answer: 8,
+        label: 'Diagonale e berechnen',
+        steps: [
+          'Formel umstellen: <sf>e = <fr>2 \u00b7 A|f</fr></sf>',
+          'Einsetzen: <sf>e = <fr>2 \u00b7 40|10</fr> = <fr>80|10</fr> = 8 cm</sf>',
+        ],
+      },
+      {
+        find: 'f',
+        given: { e: 12, A: 54 },
+        answer: 9,
+        label: 'Diagonale f berechnen',
+        steps: [
+          'Formel umstellen: <sf>f = <fr>2 \u00b7 A|e</fr></sf>',
+          '<sf>f = <fr>2 \u00b7 54|12</fr> = <fr>108|12</fr> = 9 cm</sf>',
+        ],
+      },
+      {
+        find: 'e',
+        given: { f: 7, A: 49 },
+        answer: 14,
+        label: 'Diagonale e berechnen',
+        steps: ['<sf>e = <fr>2 \u00b7 49|7</fr> = <fr>98|7</fr> = 14 cm</sf>'],
+      },
+    ],
+  },
+
+  // ── Parallelogramm ────────────────────────────────────────────────────────
+
+  {
+    id: 'ex-para-A',
+    label: 'Parallelogramm \u2013 A berechnen',
+    color: '#9b4a8c',
+    diagram: 'parallelogramm',
+    variables: [
+      { name: 'a', label: 'Grundlinie a', unit: 'cm' },
+      { name: 'h', label: 'H\u00f6he', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'A',
+        given: { a: 8, h: 5 },
+        answer: 40,
+        label: 'Fl\u00e4che berechnen',
+        steps: [
+          'Formel: <sf>A = a \u00b7 h</sf>',
+          'Einsetzen: <sf>A = 8 \u00b7 5 = 40 cm\u00b2</sf>',
+        ],
+      },
+      {
+        find: 'A',
+        given: { a: 12, h: 7 },
+        answer: 84,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = 12 \u00b7 7 = 84 cm\u00b2</sf>'],
+      },
+      {
+        find: 'A',
+        given: { a: 9, h: 6 },
+        answer: 54,
+        label: 'Fl\u00e4che berechnen',
+        steps: ['<sf>A = 9 \u00b7 6 = 54 cm\u00b2</sf>'],
+      },
+    ],
+  },
+
+  {
+    id: 'ex-para-h',
+    label: 'Parallelogramm \u2013 Umkehraufgabe',
+    color: '#9b4a8c',
+    diagram: 'parallelogramm',
+    variables: [
+      { name: 'a', label: 'Grundlinie a', unit: 'cm' },
+      { name: 'h', label: 'H\u00f6he', unit: 'cm' },
+      { name: 'A', label: 'Fl\u00e4che', unit: 'cm\u00b2' },
+    ],
+    exercises: [
+      {
+        find: 'h',
+        given: { a: 10, A: 60 },
+        answer: 6,
+        label: 'H\u00f6he berechnen',
+        steps: [
+          'Formel umstellen: <sf>h = <fr>A|a</fr></sf>',
+          'Einsetzen: <sf>h = <fr>60|10</fr> = 6 cm</sf>',
+        ],
+      },
+      {
+        find: 'h',
+        given: { a: 7, A: 56 },
+        answer: 8,
+        label: 'H\u00f6he berechnen',
+        steps: ['<sf>h = <fr>56|7</fr> = 8 cm</sf>'],
+      },
+      {
+        find: 'a',
+        given: { h: 9, A: 63 },
+        answer: 7,
+        label: 'Grundlinie berechnen',
+        steps: [
+          'Formel umstellen: <sf>a = <fr>A|h</fr></sf>',
+          '<sf>a = <fr>63|9</fr> = 7 cm</sf>',
+        ],
+      },
+    ],
+  },
+
   {
     id: 'ex-viereck-a',
     label: 'Trapez \u2013 a berechnen',
